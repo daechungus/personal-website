@@ -1,0 +1,40 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "harbor",
+				"type": "Text"
+			},
+			"item": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"product_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "this",
+									"type": "Text"
+								}
+							],
+							[
+								"product_color",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#c9cb59",
+									"type": "Color"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

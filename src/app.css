@@ -1,0 +1,20 @@
+@import "tailwindcss";
+/* @import "tailwindcss/preflight"; */
+
+@import "tailwindcss/utilities";
+
+html, body, #app {
+    margin: 0;
+    font-family: 'Urbanist Variable', sans-serif;
+    color: #eeeeee;
+}
+
+.background-gradient {
+    background: radial-gradient(
+        circle at top center,
+        hsla(241, 100%, 50%, 0.5) 0%,
+        hsla(241,  0%,  0%) 55%,
+        hsla(241,  0%,  0%) 100%
+        
+    );
+}
