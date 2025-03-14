@@ -3,7 +3,7 @@
 	import Heading from '$lib/components/Heading.svelte';
 	import { isFilled, type Content } from '@prismicio/client';
 	import { PrismicRichText } from '@prismicio/svelte';
-	// import ContentList from './ContentList.svelte';
+	import ContentList from './ContentList.svelte';
 
 	export let slice: Content.ContentIndexSlice;
 

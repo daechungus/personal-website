@@ -44,10 +44,10 @@
 <Geometry position={[-1.5,1,-3]} rate={0.6} geometry={new THREE.DodecahedronGeometry(1.3)} />
 
 <!-- Pencil -->
- <Pencil position={[4,1.6,-4]} rate={0.5} />
+ <Pencil position={[4,1,-4]} rate={0.5} />
 
 <!-- Diamond -->
  <Geometry position={[1.6,1.8,-4]} rate={0.7} geometry={new THREE.OctahedronGeometry(2)} />
 
 <!-- Apple Pencil -->
- <Apple position={[-1.6,0,1]} rate={0.5} />
+ <Apple position={[-1.6,0,1.6]} rate={0.5} />

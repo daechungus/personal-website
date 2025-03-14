@@ -62,7 +62,7 @@
 
         <!-- Metal Band -->
         <Threlte.Mesh position={[-2.1, -1, 0]} rotation={[0, 0, Math.PI / 2]}>
-            <Threlte.CylinderGeometry args={[0.31, 0.31, 0.3, 32]} />
+            <Threlte.CylinderGeometry args={[0.301, 0.301, 0.3, 32]} />
             <Threlte.MeshStandardMaterial 
                 color="#C0C0C0"  
                 metalness={0.8}
@@ -72,7 +72,7 @@
 
         <!-- Eraser -->
         <Threlte.Mesh position={[-2.25, -1, 0]} rotation={[0, 0, Math.PI / 2]}>
-            <Threlte.CylinderGeometry args={[0.3, 0.3, 0.5, 32]} />
+            <Threlte.CylinderGeometry args={[0.3, 0.3, 0.6, 32]} />
             <Threlte.MeshStandardMaterial color="#FF69B4" />
         </Threlte.Mesh>
     </Float>

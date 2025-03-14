@@ -84,6 +84,19 @@
             />
         </Threlte.Mesh>
 
+        <!-- Metal Band -->
+        <Threlte.Mesh position={[2.4,0,0]} rotation={[0,Math.PI, Math.PI/2]}>
+            <Threlte.CylinderGeometry 
+                args={[0.201, 0.201, 0.3, 32]} 
+            />
+            <Threlte.MeshStandardMaterial 
+                color="#bdb8b8" 
+                metalness={1}
+                smoothness={0.2}
+            />
+        </Threlte.Mesh>
+
+
         <!-- Optional: Subtle band near the tip
         <Threlte.Mesh position={[-2.8, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
             <Threlte.CylinderGeometry 
