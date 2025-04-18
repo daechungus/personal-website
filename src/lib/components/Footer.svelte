@@ -9,10 +9,10 @@
 
     export let settings: Content.SettingsDocument;
 
-</script>
+</script>	
 
 
-<footer class="text-slate-600">
+<Bounded class="text-slate-600">
 	<div
 		class="container mx-auto flex mt-20 flex-col items-center justify-between gap-6 py-8 sm:flex-row"
 	>
@@ -82,4 +82,4 @@
 			{/if}
 		</div>
 	</div>
-</footer>
+</Bounded>
