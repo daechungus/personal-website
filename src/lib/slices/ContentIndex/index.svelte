@@ -23,9 +23,9 @@
 		</div>
 	{/if}
 
-	<!-- <ContentList
+	<ContentList
 		{items}
 		fallbackItemImage={slice.primary.fallback_item_image}
 		viewMoreText={slice.primary.view_more_text}
-	/> -->
+	/>
 </Bounded>
