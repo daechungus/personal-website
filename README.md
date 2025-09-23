@@ -5,3 +5,7 @@ Fixed modern UI with updates, proper typography and plugins, chronological order
 
 6/6/2025
 Simple updates for our projects
+
+Why are my pushes not being committed? 
+
+

@@ -4,15 +4,26 @@
 html, body, #app {
     margin: 0;
     font-family: 'Urbanist Variable', sans-serif;
-    color: #eeeeee;
+    color: #171714;
 }
 
 .background-gradient {
     background: radial-gradient(
         circle at top center,
-        hsla(241, 100%, 50%, 0.5) 0%,
-        hsla(241,  0%,  0%) 55%,
-        hsla(241,  0%,  0%) 100%
-        
+        hsla(120, 25%, 85%, 0.6) 0%,
+        hsla(120, 20%, 75%, 0.4) 35%,
+        hsla(120, 15%, 65%, 0.2) 70%,
+        hsla(120, 10%, 55%, 0.1) 100%
     );
 }
+
+/* .background-gradient {
+    background: radial-gradient{
+        circle at center,
+        #44624a	0%,
+        #8ba888	55%,
+        #c0cfb2	100%,
+        #f1ebe1	100%, 
+        #ffffff	100%
+    }
+} */

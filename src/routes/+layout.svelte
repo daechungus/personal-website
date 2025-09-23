@@ -40,7 +40,7 @@
 ></div>
 
 <div 
-	class="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"
+	class="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-10 mix-blend-overlay"
 > </div>
 	
 <Footer settings={data.settings}>
