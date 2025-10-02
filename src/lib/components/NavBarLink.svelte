@@ -14,13 +14,13 @@
 
 {#if type === 'desktop'}
 	<PrismicLink
-		class="group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
+		class="group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-matcha-600"
 		{field}
 		on:click={onLinkClick}
 		aria-current={isActive ? 'page' : undefined}
 	>
 		<span
-			class={`absolute inset-0 z-0 h-full rounded bg-blue-900 transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${isActive ? 'translate-y-6' : 'translate-y-8'}`}
+			class={`absolute inset-0 z-0 h-full rounded bg-matcha-700 transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${isActive ? 'translate-y-6' : 'translate-y-8'}`}
 		></span>
 
 		<span class="relative">
@@ -29,13 +29,13 @@
 	</PrismicLink>
 {:else}
 	<PrismicLink
-		class="group relative block overflow-hidden rounded px-3 text-3xl font-bold text-slate-900"
+		class="group relative block overflow-hidden rounded px-3 text-3xl font-bold text-matcha-600"
 		{field}
 		on:click={onLinkClick}
 		aria-current={isActive ? 'page' : undefined}
 	>
 		<span
-			class={`absolute inset-0 z-0 h-full rounded bg-blue-900 transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${isActive ? 'translate-y-6' : 'translate-y-16'}`}
+			class={`absolute inset-0 z-0 h-full rounded bg-matcha-600 transition-transform duration-300 ease-in-out group-hover:translate-y-0 ${isActive ? 'translate-y-6' : 'translate-y-16'}`}
 		></span>
 
 		<span class="relative">

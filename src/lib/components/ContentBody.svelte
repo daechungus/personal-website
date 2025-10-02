@@ -14,16 +14,16 @@
 </script>
 
 <Bounded tag="article">
-	<div class="rounded-2xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:py-20">
+	<div class="rounded-2xl border-2 border-brown-800 bg-sage-50 px-4 py-10 md:px-8 md:py-20 opacity-40">
 		<Heading tag="h1">{page.data.title}</Heading>
-		<div class="flex gap-4 text-blue-900">
+		<div class="flex gap-4 text-brown-800">
 			{#each page.tags as tag}
 				<span class="text-xl font-bold">
 					{tag}
 				</span>
 			{/each}
 		</div>
-		<p class="mt-8 border-b border-slate-600 text-xl font-medium text-slate-300">{formattedDate}</p>
+		<p class="mt-8 border-b border-brown-800 text-xl font-medium text-brown-800">{formattedDate}</p>
 
 		<div class="prose prose-lg prose-invert mt-12 w-full max-w-none md:mt-20">
 			<SliceZone slices={page.data.slices} {components} />

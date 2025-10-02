@@ -12,7 +12,7 @@
 </script>	
 
 
-<Bounded class="text-slate-600">
+<Bounded class="text-sage-900">
 	<div
 		class="container mx-auto flex mt-20 flex-col items-center justify-between gap-6 py-8 sm:flex-row"
 	>
@@ -21,42 +21,45 @@
 		>
 			<a
 				href="/"
-				class="text-xl font-extrabold tracking-tighter text-slate-100 transition-color duration-150 hover:text-blue-900"
+				class="text-xl font-extrabold tracking-tighter text-matcha-600 transition-color duration-150 hover:text-matcha-700"
 			>
 				{settings.data.name}
 			</a>
 			<span
-				class="hidden text-5xl font-extralight leading-[0] text-slate-400 sm:inline"
+				class="hidden text-5xl font-extralight leading-[0] text-matcha-600 sm:inline"
 				aria-hidden="true">/</span
 			>
-			<p class="text-sm text-slate-300">
+			<p class="text-sm text-sage-300">
 				© {new Date().getFullYear()}
 				{settings.data.name}
 			</p>
 		</div>
+
+
+		<!-- footer -->
 		<nav class="navigation" aria-label="Footer Navigation">
 			<ul class="flex items-center gap-1">
 				{#each settings.data.nav_item as { link, label }, index}
 					<li>
 						<PrismicLink
 							field={link}
-							class="block px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:text-blue-900"
+							class="block px-3 py-1 text-base font-bold text-matcha-600 transition-colors duration-150 hover:text-matcha-700"
 							>{label}</PrismicLink
 						>
 					</li>
 					{#if index < settings.data.nav_item.length - 1}
-						<span class="text-4xl font-thin leading-[0] text-slate-400" aria-hidden="true">
+						<span class="text-4xl font-thin leading-[0] text-matcha-600" aria-hidden="true">
 							/
 						</span>
 					{/if}
 				{/each}
 			</ul>
 		</nav>
-		<div class="socials inline-flex justify-center sm:justify-end">
+		<div class="socials inline-flex justify-center sm:justify-end fill-matcha-600">
 			{#if isFilled.link(settings.data.github_link)}
 				<PrismicLink
 					field={settings.data.github_link}
-					class="p-2 text-2xl text-slate-300 transform transition-all duration-150 hover:scale-125 hover:text-blue-900"
+					class="p-2 text-2xl text-matcha-600 transform transition-all duration-150 hover:scale-125 hover:text-matcha-700"
 					aria-label={settings.data.name + ' on Github'}
 				>
 					<IconGithub />
@@ -65,7 +68,7 @@
 			{#if isFilled.link(settings.data.linkedin_link)}
 				<PrismicLink
 					field={settings.data.linkedin_link}
-					class="p-2 text-2xl text-slate-300 transform transition-all duration-150 hover:scale-125 hover:text-blue-900"
+					class="p-2 text-2xl text-matcha-600 transform transition-all duration-150 hover:scale-125 hover:text-matcha-700"
 					aria-label={settings.data.name + ' on Linkedin'}
 				>
 					<IconLinkedin />
@@ -74,7 +77,7 @@
 			{#if isFilled.link(settings.data.instagram_link)}
 				<PrismicLink
 					field={settings.data.instagram_link}
-					class="p-2 text-2xl text-slate-300 transform transition-all duration-150 hover:scale-125 hover:text-blue-900"
+					class="p-2 text-2xl text-matcha-600 transform transition-all duration-150 hover:scale-125 hover:text-matcha-700"
 					aria-label={settings.data.name + ' on Instagram'}
 				>
 					<IconInstagram />
@@ -83,3 +86,4 @@
 		</div>
 	</div>
 </Bounded>
+
