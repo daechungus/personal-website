@@ -15,7 +15,7 @@
 			{slice.primary.heading}
 		</Heading>
 
-		<div class="col-start-1 prose prose-invert prose-slate prose-xl text-matcha-600 leading-relaxed text-lg">
+		<div class="col-start-1 prose prose-invert prose-slate prose-xl text-sage-800 leading-relaxed text-lg">
 			<PrismicRichText field={slice.primary.description} />
 		</div>
 		<Button linkField={slice.primary.button_link} label={slice.primary.button_label} />

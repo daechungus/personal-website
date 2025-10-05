@@ -11,7 +11,7 @@
 
 <Bounded>
 	<div class="rounded-2xl border-2 border-brown-800 bg-sage-50 px-4 md:px-8 md:py-10 opacity-90">
-		<Heading tag="h1" size="md" class="text-matcha-600">Projects</Heading>
+		<Heading tag="h1" size="md" class="text-matcha-600">A Peek in My Head</Heading>
 		
 		<div class="mt-12 grid gap-8 md:mt-12">
 			{#each data.projects as project}
@@ -22,7 +22,7 @@
 						</h2>
 					</PrismicLink>
 					
-					<div class="mt-4 flex gap-4 text-brown-700">
+					<div class="mt-2 flex gap-2 text-brown-700">
 						{#each project.tags as tag}
 							<span class="text-sm font-semibold">
 								{tag}
@@ -30,12 +30,12 @@
 						{/each}
 					</div>
 					
-					<p class="mt-4 text-lg font-medium text-brown-700">
+					<p class="mt-2 text-md font-medium text-brown-700">
 						{formatDate(project.data.date)}
 					</p>
 					
 					{#if project.data.meta_description}
-						<p class="mt-4 text-sage-700">
+						<p class="mt-2 text-sage-700">
 							{project.data.meta_description}
 						</p>
 					{/if}

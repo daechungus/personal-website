@@ -11,7 +11,7 @@
 
 <Bounded>
 	<div class="rounded-2xl border-2 border-brown-800 bg-sage-50 px-4 md:px-8 md:py-10 opacity-80">
-		<Heading tag="h1" size="md" class="text-matcha-600">My Blog</Heading>
+		<Heading tag="h1" size="md" class="text-matcha-600">My Quaint Life</Heading>
 		
 		<div class="mt-12 grid gap-8 md:mt-12">
 			{#each data.blogPosts as post}
