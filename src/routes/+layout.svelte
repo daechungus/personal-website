@@ -27,12 +27,12 @@
 </svelte:head>
 
 
-<div class="relative min-h-screen">
+<div class="relative min-h-screen flex flex-col">
 	<Header settings={data.settings}> 
 
 	</Header>
 
-	<main>
+	<main class="flex-1">
 		<slot />
 	</main>
 	

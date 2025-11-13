@@ -15,8 +15,8 @@
 	}
 </script>
 
-<header class="top-0 z-50 mx-auto max-w-7xl md:sticky md:top-4 relative">
-	<nav>
+<header class="top-0 z-50 md:sticky md:top-4 relative px-4 md:px-6">
+	<nav class="mx-auto w-full max-w-7xl">
 		<div
 			class="flex flex-col justify-between rounded-b-lg bg-sage-50 px-4 py-2 md:m4 md:flex-row md:items-center md:rounded-xl"
 		>
