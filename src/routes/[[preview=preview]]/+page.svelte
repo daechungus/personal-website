@@ -45,6 +45,11 @@
 
 <SliceZone slices={data.page.data.slices} {components} />
 
+<!-- About Section -->
+<div id="about">
+	<SliceZone slices={data.aboutSlices} {components} />
+</div>
+
 <!-- Projects Section -->
 <Bounded id="projects">
 	<Heading tag="h2" size="md" class="text-matcha-600">A Peek in My Head</Heading>
