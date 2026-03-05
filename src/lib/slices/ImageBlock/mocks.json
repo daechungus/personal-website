@@ -23,6 +23,11 @@
 					"background": "transparent"
 				},
 				"thumbnails": {}
+			},
+			"caption": {
+				"__TYPE__": "FieldContent",
+				"value": "A developer working on their laptop",
+				"type": "Text"
 			}
 		},
 		"items": []

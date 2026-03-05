@@ -1,6 +1,6 @@
 <script lang="ts">
 
-    import {type Content, isFilled } from '@prismicio/client';
+    import {type Content, isFilled, asLink } from '@prismicio/client';
     import { PrismicLink } from '@prismicio/svelte';
     import IconGithub from '~icons/fa-brands/github';
     import IconLinkedin from '~icons/fa-brands/linkedin';
@@ -9,12 +9,25 @@
 
     export let settings: Content.SettingsDocument;
 
-</script>	
+    const sectionMap: Record<string, string> = {
+        '/about': '/#about',
+        '/projects': '/#projects',
+        '/project': '/#projects',
+        '/blog': '/#blog'
+    };
+
+    function resolveHref(link: any): string {
+        const path = asLink(link);
+        if (path && sectionMap[path]) return sectionMap[path];
+        return path || '/';
+    }
+
+</script>
 
 
 <Bounded class="text-sage-900">
 	<div
-		class="container mx-auto flex mt-20 flex-col items-center justify-between gap-6 py-8 sm:flex-row"
+		class="container mx-auto flex mt-12 flex-col items-center justify-between gap-6 border-t border-sage-300 py-8 sm:flex-row"
 	>
 		<div
 			class="name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start"
@@ -41,11 +54,10 @@
 			<ul class="flex items-center gap-1">
 				{#each settings.data.nav_item as { link, label }, index}
 					<li>
-						<PrismicLink
-							field={link}
+						<a
+							href={resolveHref(link)}
 							class="block px-3 py-1 text-base font-bold text-matcha-600 transition-colors duration-150 hover:text-matcha-700"
-							>{label}</PrismicLink
-						>
+						>{label}</a>
 					</li>
 					{#if index < settings.data.nav_item.length - 1}
 						<span class="text-4xl font-thin leading-[0] text-matcha-600" aria-hidden="true">
@@ -86,4 +98,3 @@
 		</div>
 	</div>
 </Bounded>
-

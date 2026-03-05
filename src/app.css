@@ -47,10 +47,18 @@
   --color-beige-900: #4a3929;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html, body, #app {
     margin: 0;
     font-family: 'Urbanist Variable', sans-serif;
     color: #171714;
+}
+
+[id] {
+    scroll-margin-top: 5rem;
 }
 
 .background-gradient {

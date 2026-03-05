@@ -18,7 +18,7 @@
 <header class="top-0 z-50 md:sticky md:top-4 relative px-4 md:px-6">
 	<nav class="mx-auto w-full max-w-7xl">
 		<div
-			class="flex flex-col justify-between rounded-b-lg bg-sage-50 px-4 py-2 md:m4 md:flex-row md:items-center md:rounded-xl"
+			class="flex flex-col justify-between rounded-b-lg bg-sage-50 px-4 py-2 shadow-sm md:m-4 md:flex-row md:items-center md:rounded-xl"
 		>
 			<div class="flex items-center justify-between">
 				<a
