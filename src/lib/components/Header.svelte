@@ -2,6 +2,8 @@
 	import { type Content, isFilled } from '@prismicio/client';
 	import NavBarLink from './NavBarLink.svelte';
 	import Button from './Button.svelte';
+	import ThemeToggle from './ThemeToggle.svelte';
+	import { theme } from '$lib/stores/theme';
 
 	import IconMenu from '~icons/ic/baseline-menu';
 	import IconClose from '~icons/ic/baseline-close';
@@ -18,18 +20,21 @@
 <header class="top-0 z-50 md:sticky md:top-4 relative px-4 md:px-6">
 	<nav class="mx-auto w-full max-w-7xl">
 		<div
-			class="flex flex-col justify-between rounded-b-lg bg-sage-50 px-4 py-2 shadow-sm md:m-4 md:flex-row md:items-center md:rounded-xl"
+			class="flex flex-col justify-between rounded-b-lg px-4 py-2 shadow-sm md:m-4 md:flex-row md:items-center md:rounded-xl transition-colors duration-300
+				{$theme === 'opus' ? 'bg-[#111111] border border-white/10' : 'bg-sage-50'}"
 		>
 			<div class="flex items-center justify-between">
 				<a
 					href="/"
 					aria-label="Homepage"
-					class="text-xl font-extrabold tracking-tighter text-matcha-600">{settings.data.name}</a
+					class="text-xl font-extrabold tracking-tighter transition-colors duration-300
+						{$theme === 'opus' ? 'text-white' : 'text-matcha-600'}">{settings.data.name}</a
 				>
 				<button
 					aria-expanded={open}
 					aria-label="Open Menu"
-					class="block p-2 text-2xl text-matcha-600 md:hidden"
+					class="block p-2 text-2xl md:hidden transition-colors duration-300
+						{$theme === 'opus' ? 'text-white' : 'text-matcha-600'}"
 					on:click={() => (open = true)}
 				>
 					<IconMenu />
@@ -37,13 +42,14 @@
 			</div>
 			<!-- Mobile Nav -->
 			<ul
-				class={`fixed inset-0 z-50 flex flex-col items-end gap-4 bg-sage-50 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden ${open ? 'translate-x-0' : 'translate-x-[100%]'}`}
+				class={`fixed inset-0 z-50 flex flex-col items-end gap-4 pr-4 pt-14 transition-all duration-300 ease-in-out md:hidden ${$theme === 'opus' ? 'bg-[#0a0a0a]' : 'bg-sage-50'} ${open ? 'translate-x-0' : 'translate-x-[100%]'}`}
 			>
 				<li>
 					<button
 						aria-expanded={open}
 						aria-label="Close Menu"
-						class="fixed right-4 top-3 block p-2 text-2xl text-matcha-600 md:hidden"
+						class="fixed right-4 top-3 block p-2 text-2xl md:hidden transition-colors duration-300
+							{$theme === 'opus' ? 'text-white' : 'text-matcha-600'}"
 						on:click={() => (open = false)}
 					>
 						<IconClose />
@@ -57,6 +63,9 @@
 				{#if isFilled.link(settings.data.cta_link)}
 					<Button linkField={settings.data.cta_link} label={settings.data.cta_label} />
 				{/if}
+				<li class="mt-4">
+					<ThemeToggle />
+				</li>
 			</ul>
 
 			<!-- Desktop Nav -->
@@ -69,6 +78,9 @@
 				{#if isFilled.link(settings.data.cta_link)}
 					<Button linkField={settings.data.cta_link} label={settings.data.cta_label} class="ml-3" />
 				{/if}
+				<li class="ml-2">
+					<ThemeToggle />
+				</li>
 			</ul>
 		</div>
 	</nav>

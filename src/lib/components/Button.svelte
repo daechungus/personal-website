@@ -1,6 +1,7 @@
 <script lang="ts">
     import {type KeyTextField, type LinkField } from '@prismicio/client';
     import { PrismicLink } from '@prismicio/svelte';
+    import { theme } from '$lib/stores/theme';
 
     import IconArrow from '~icons/ic/baseline-arrow-outward';
 
@@ -9,19 +10,18 @@
     export let showIcon: boolean = true;
 
     let className: string ='';
-    export {className as class }; 
+    export {className as class };
 
 </script>
 
 
-<PrismicLink 
+<PrismicLink
     field={linkField}
-    class={`group text-matcha-600 relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-brown-900 bg-sage-50 px-4 py-2 font-bold transition-transform eas-out hover:scale-105 ${className}`}
-
+    class={`group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 px-4 py-2 font-bold transition-all ease-out hover:scale-105 ${$theme === 'opus' ? 'text-white border-white/20 bg-[#111111]' : 'text-matcha-600 border-brown-900 bg-sage-50'} ${className}`}
 >
 
 <span
-		class={`absolute inset-0 z-0 h-full rounded bg-matcha-700 transition-transform duration-300 ease-in-out group-hover:translate-y-0 translate-y-9`}
+		class={`absolute inset-0 z-0 h-full rounded transition-transform duration-300 ease-in-out group-hover:translate-y-0 translate-y-9 ${$theme === 'opus' ? 'bg-white/15' : 'bg-matcha-700'}`}
 	></span>
 
 	<span class="relative flex items-center justify-center gap-2"

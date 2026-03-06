@@ -6,13 +6,18 @@
     import gsap from 'gsap';
 	import { elasticOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
-    
+
     export let position: [number, number, number] = [0, 0, 0];
     export let rate = 0.5;
     export let layers=0;
+    export let label: string = '';
+    export let onHover: ((pos: [number, number, number]) => void) | undefined = undefined;
+    export let onUnhover: (() => void) | undefined = undefined;
 
     let visible = false;
 	let reducedMotionRate = 0;
+    let groupRef: THREE.Group;
+    let hovered = false;
 
     const bounce = createTransition((ref: THREE.Object3D | any) => {
         return {
@@ -32,17 +37,36 @@
 	});
 
 	$: compoundRate = rate * reducedMotionRate;
+
+    function handlePointerEnter() {
+        hovered = true;
+        if (groupRef) {
+            gsap.to(groupRef.scale, { x: 1.3, y: 1.3, z: 1.3, duration: 0.3, ease: 'back.out(1.7)' });
+        }
+        onHover?.(position);
+    }
+
+    function handlePointerLeave() {
+        hovered = false;
+        if (groupRef) {
+            gsap.to(groupRef.scale, { x: 1, y: 1, z: 1, duration: 0.3, ease: 'power2.out' });
+        }
+        onUnhover?.();
+    }
 </script>
 
-<Threlte.Group position={position} layers={layers} {visible} in={bounce}>
+<Threlte.Group position={position} layers={layers} {visible} in={bounce} bind:ref={groupRef}
+    on:pointerenter={handlePointerEnter}
+    on:pointerleave={handlePointerLeave}
+>
     <Float speed={5*rate} rotationSpeed={5*rate} rotationIntensity={6*rate} floatIntensity={6*rate} rotation={[0, Math.PI/12, Math.PI/2]}>
         <!-- Main Body (thinner and longer) -->
         <Threlte.Mesh position={[0, 0, 0]} rotation={[0, Math.PI, Math.PI / 2]}>
-            <Threlte.CylinderGeometry 
-                args={[0.2, 0.2, 6, 32]} 
+            <Threlte.CylinderGeometry
+                args={[0.2, 0.2, 6, 32]}
             />
-            <Threlte.MeshStandardMaterial 
-                color="#FAFAFA" 
+            <Threlte.MeshStandardMaterial
+                color="#FAFAFA"
                 metalness={0.1}
                 roughness={0.1}
             />
@@ -50,11 +74,11 @@
 
         <!-- Tip Base (transition to tip) -->
         <Threlte.Mesh position={[-3.3, 0, 0]} rotation={[0, 0, -Math.PI / 2]}>
-            <Threlte.CylinderGeometry 
-                args={[0.2, 0.05, 0.6, 32]} 
+            <Threlte.CylinderGeometry
+                args={[0.2, 0.05, 0.6, 32]}
             />
-            <Threlte.MeshStandardMaterial 
-                color="#FAFAFA" 
+            <Threlte.MeshStandardMaterial
+                color="#FAFAFA"
                 metalness={0.1}
                 roughness={0.1}
             />
@@ -62,11 +86,11 @@
 
          <!-- Rounded Tip -->
          <Threlte.Mesh position={[-3.6,  0, 0]} rotation={[0, 0, -Math.PI / 2]}>
-            <Threlte.SphereGeometry 
-                args={[0.05, 32, 32]} 
+            <Threlte.SphereGeometry
+                args={[0.05, 32, 32]}
             />
-            <Threlte.MeshStandardMaterial 
-                color="#FAFAFA" 
+            <Threlte.MeshStandardMaterial
+                color="#FAFAFA"
                 metalness={0.1}
                 roughness={0.1}
             />
@@ -74,10 +98,10 @@
 
         <!-- Cap End (subtle rounded end) -->
         <Threlte.Mesh position={[3, 0, 0]} rotation={[0, Math.PI, Math.PI / 2]}>
-            <Threlte.SphereGeometry 
-                args={[0.2, 32, 32]} 
+            <Threlte.SphereGeometry
+                args={[0.2, 32, 32]}
             />
-            <Threlte.MeshStandardMaterial 
+            <Threlte.MeshStandardMaterial
                 color="#FAFAFA"
                 metalness={0.1}
                 roughness={0.1}
@@ -86,27 +110,14 @@
 
         <!-- Metal Band -->
         <Threlte.Mesh position={[2.4,0,0]} rotation={[0,Math.PI, Math.PI/2]}>
-            <Threlte.CylinderGeometry 
-                args={[0.201, 0.201, 0.3, 32]} 
+            <Threlte.CylinderGeometry
+                args={[0.201, 0.201, 0.3, 32]}
             />
-            <Threlte.MeshStandardMaterial 
-                color="#bdb8b8" 
+            <Threlte.MeshStandardMaterial
+                color="#bdb8b8"
                 metalness={1}
-                smoothness={0.2}
+                roughness={0.2}
             />
         </Threlte.Mesh>
-
-
-        <!-- Optional: Subtle band near the tip
-        <Threlte.Mesh position={[-2.8, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
-            <Threlte.CylinderGeometry 
-                args={[0.21, 0.21, 0.1, 32]}
-            />
-            <Threlte.MeshStandardMaterial 
-                color="#CCCCCC"
-                metalness={0.9}
-                roughness={0.1}
-            />
-        </Threlte.Mesh> -->
     </Float>
 </Threlte.Group>

@@ -1,15 +1,26 @@
 <script>
 	import '../app.css';
 	import '@fontsource-variable/urbanist';
-	
+
 	import { PrismicPreview } from '@prismicio/svelte/kit';
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
 	import Footer from '../lib/components/Footer.svelte';
 	import Header from '../lib/components/Header.svelte';
+	import LandingAnimation from '../lib/components/LandingAnimation.svelte';
+	import { theme } from '$lib/stores/theme';
+	import { onMount } from 'svelte';
 
 	export let data;
 
+	// Split the settings name into first/last for landing animation
+	$: nameParts = (data.settings?.data?.name || '').split(' ');
+	$: firstName = nameParts[0] || '';
+	$: lastName = nameParts.slice(1).join(' ') || '';
+
+	onMount(() => {
+		theme.init();
+	});
 </script>
 
 <svelte:head>
@@ -27,8 +38,10 @@
 </svelte:head>
 
 
+<LandingAnimation {firstName} {lastName} />
+
 <div class="relative min-h-screen flex flex-col">
-	<Header settings={data.settings}> 
+	<Header settings={data.settings}>
 
 	</Header>
 
@@ -44,8 +57,8 @@
 		class="background-gradient absolute inset-0 -z-50 min-h-full"
 	></div>
 
-	<div 
-		class="pointer-events-none absolute inset-0 -z-40 min-h-full bg-[url('/noisetexture.jpg')] opacity-10 mix-blend-overlay"
-	> </div>
+	<div
+		class="noise-overlay pointer-events-none absolute inset-0 -z-40 min-h-full bg-[url('/noisetexture.jpg')] opacity-10 mix-blend-overlay"
+	></div>
 </div>
 <PrismicPreview {repositoryName} />

@@ -1,14 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="matcha">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			(function() {
+				var theme = localStorage.getItem('theme') || 'matcha';
+				document.documentElement.setAttribute('data-theme', theme);
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover" class = "relative min-h-screen">
+	<body data-sveltekit-preload-data="hover" class="relative min-h-screen">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
-
-<!-- change background with bg- -->

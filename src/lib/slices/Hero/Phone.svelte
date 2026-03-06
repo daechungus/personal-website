@@ -10,22 +10,28 @@
 
     let visible = false;
 	let reducedMotionRate = 0;
-    
+
     export let position: [number, number, number] = [0, 0, 0];
     export let rate = 0.5;
     export let layers = 0;
+    export let label: string = '';
+    export let onHover: ((pos: [number, number, number]) => void) | undefined = undefined;
+    export let onUnhover: (() => void) | undefined = undefined;
 
-    function createRoundedRectGeometry( 
-        width: number, 
-        height: number, 
-        depth: number, 
-        radius: number, 
+    let groupRef: THREE.Group;
+    let hovered = false;
+
+    function createRoundedRectGeometry(
+        width: number,
+        height: number,
+        depth: number,
+        radius: number,
         bevelSize: number = 0.02,
         bevelThickness: number = 0.02,
         bevelSegments: number = 3
     ) {
         const shape = new THREE.Shape();
-        
+
         shape.moveTo(-width/2 + radius, -height/2);
         shape.lineTo(width/2 - radius, -height/2);
         shape.quadraticCurveTo(width/2, -height/2, width/2, -height/2 + radius);
@@ -69,33 +75,52 @@
 
 	$: compoundRate = rate * reducedMotionRate;
 
+    function handlePointerEnter() {
+        hovered = true;
+        if (groupRef) {
+            gsap.to(groupRef.scale, { x: 1.3, y: 1.3, z: 1.3, duration: 0.3, ease: 'back.out(1.7)' });
+        }
+        onHover?.(position);
+    }
+
+    function handlePointerLeave() {
+        hovered = false;
+        if (groupRef) {
+            gsap.to(groupRef.scale, { x: 1, y: 1, z: 1, duration: 0.3, ease: 'power2.out' });
+        }
+        onUnhover?.();
+    }
+
 </script>
 
-<Threlte.Group position={position} layers={layers} {visible} in={bounce}>
+<Threlte.Group position={position} layers={layers} {visible} in={bounce} bind:ref={groupRef}
+    on:pointerenter={handlePointerEnter}
+    on:pointerleave={handlePointerLeave}
+>
     <Float speed={5*rate} rotationSpeed={5*rate} rotationIntensity={6*rate} floatIntensity={3*rate} rotate={[0, Math.PI, Math.PI/10]} >
-        
+
         <!-- Main Phone Body with Rounded Corners -->
-        <Threlte.Mesh 
+        <Threlte.Mesh
             geometry={phoneGeometry}
             position={[0, 0, -0.1]}
         >
-            <Threlte.MeshStandardMaterial 
+            <Threlte.MeshStandardMaterial
                 color="#202020"
                 metalness={1}
                 roughness={0.2}
                 emissive="#000000"
                 emissiveIntensity={1}
-                flatShading={false}  
-                side={THREE.DoubleSide}  
+                flatShading={false}
+                side={THREE.DoubleSide}
             />
         </Threlte.Mesh>
 
         <!-- Camera Module Background (Squared with rounded corners) -->
-        <Threlte.Mesh 
+        <Threlte.Mesh
             geometry={cameraModuleGeometry}
             position={[-0.8, 2.5, 0.25]}>
 
-            <Threlte.MeshStandardMaterial 
+            <Threlte.MeshStandardMaterial
                 color="#0d0d0d"
                 metalness={0.9}
                 roughness={0.2}
@@ -105,19 +130,19 @@
         <!-- Main Camera -->
         <Threlte.Mesh position={[-1.1, 2.85, 0.4]} rotation={[Math.PI/2, 0, 0]}>
             <Threlte.CylinderGeometry args={[0.27, 0.27, 0.08, 32]} />
-            <Threlte.MeshStandardMaterial 
+            <Threlte.MeshStandardMaterial
                 color="#0d0d0d"
                 metalness={0.95}
                 roughness={0.1}
-                flatShading={false}  
+                flatShading={false}
                 side={THREE.DoubleSide}
             />
         </Threlte.Mesh>
 
         <Threlte.Mesh position={[-1.1, 2.85, 0.4]} rotation={[Math.PI/2, 0, 0]}>
             <Threlte.CylinderGeometry args={[0.3, 0.3, 0.03, 32]} />
-            <Threlte.MeshStandardMaterial 
-                color="#727272" 
+            <Threlte.MeshStandardMaterial
+                color="#727272"
                 metalness={0.9}
                 roughness={0.05}
             />
@@ -126,18 +151,18 @@
         <!-- Ultra Wide Camera Lens -->
         <Threlte.Mesh position={[-0.5, 2.5, 0.4]} rotation={[Math.PI/2, 0, 0]}>
             <Threlte.CylinderGeometry args={[0.27, 0.27, 0.08, 32]} />
-            <Threlte.MeshStandardMaterial 
+            <Threlte.MeshStandardMaterial
                 color="#0d0d0d"
                 metalness={0.95}
                 roughness={0.1}
-                flatShading={false}  
+                flatShading={false}
                 side={THREE.DoubleSide}
             />
         </Threlte.Mesh>
 
         <Threlte.Mesh position={[-0.5, 2.5, 0.4]} rotation={[Math.PI/2, 0, 0]}>
             <Threlte.CylinderGeometry args={[0.3, 0.3, 0.03, 32]} />
-            <Threlte.MeshStandardMaterial 
+            <Threlte.MeshStandardMaterial
                 color="#727272"
                 metalness={0.9}
                 roughness={0.05}
@@ -147,7 +172,7 @@
         <!-- Telephoto Camera Lens -->
         <Threlte.Mesh position={[-1.1, 2.15, 0.4]} rotation={[Math.PI/2, 0, 0]}>
             <Threlte.CylinderGeometry args={[0.27, 0.27, 0.08, 32]} />
-            <Threlte.MeshStandardMaterial 
+            <Threlte.MeshStandardMaterial
                 color="#0d0d0d"
                 metalness={0.95}
                 roughness={0.1}
@@ -156,7 +181,7 @@
 
         <Threlte.Mesh position={[-1.1, 2.15, 0.4]} rotation={[Math.PI/2, 0, 0]}>
             <Threlte.CylinderGeometry args={[0.3, 0.3, 0.03, 32]} />
-            <Threlte.MeshStandardMaterial 
+            <Threlte.MeshStandardMaterial
                 color="#727272"
                 metalness={0.9}
                 roughness={0.05}
@@ -166,19 +191,19 @@
         <!-- Flash Lens -->
         <Threlte.Mesh position={[-0.5, 3, 0.4]} rotation={[Math.PI/2, 0, 0]}>
             <Threlte.CylinderGeometry args={[0.14, 0.14, 0.05, 32]} />
-                <Threlte.MeshStandardMaterial 
+                <Threlte.MeshStandardMaterial
                 color="#121212"
                 metalness={0.3}
                 roughness={0.2}
                 emissive="#ffffe5"
-                emissiveIntensity={1}  
+                emissiveIntensity={1}
             />
         </Threlte.Mesh>
-        
-        <!-- Flash Lens Cover (optional) -->    
+
+        <!-- Flash Lens Cover -->
         <Threlte.Mesh position={[-0.5, 3, 0.42]} rotation={[Math.PI/2, 0, 0]}>
             <Threlte.CylinderGeometry args={[0.13, 0.13, 0.02, 32]} />
-            <Threlte.MeshStandardMaterial 
+            <Threlte.MeshStandardMaterial
                 color="#fffe15"
                 metalness={0.1}
                 roughness={0.1}
@@ -190,16 +215,16 @@
          <!-- Bottom Lens -->
          <Threlte.Mesh position={[-0.5, 2, 0.4]} rotation={[Math.PI/2, 0, 0]}>
             <Threlte.CylinderGeometry args={[0.14, 0.14, 0.05, 32]} />
-                <Threlte.MeshStandardMaterial 
+                <Threlte.MeshStandardMaterial
                 color="#202020"
                 metalness={0.3}
                 roughness={0.2}
             />
         </Threlte.Mesh>
-        
+
         <Threlte.Mesh position={[-0.5, 2, 0.42]} rotation={[Math.PI/2, 0, 0]}>
             <Threlte.CylinderGeometry args={[0.13, 0.13, 0.02, 32]} />
-            <Threlte.MeshStandardMaterial 
+            <Threlte.MeshStandardMaterial
                 color="#202020"
                 metalness={0.95}
                 roughness={0.1}

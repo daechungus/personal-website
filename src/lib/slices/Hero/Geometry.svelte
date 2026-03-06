@@ -9,9 +9,14 @@
 	export let position: [number, number, number] = [0, 0, 0];
 	export let geometry: THREE.BufferGeometry = new THREE.IcosahedronGeometry(3);
 	export let rate = 0.5;
+	export let label: string = '';
+	export let onHover: ((pos: [number, number, number]) => void) | undefined = undefined;
+	export let onUnhover: (() => void) | undefined = undefined;
 
 	let visible = false;
 	let reducedMotionRate = 0;
+	let hovered = false;
+	let groupRef: THREE.Group;
 
 	const materialParams = [
 		{ color: 0xFF7669, roughness: 0.1, metalness: 0.5 },
@@ -43,23 +48,39 @@
 	});
 
 	$: compoundRate = rate * reducedMotionRate;
+
+	function handlePointerEnter() {
+		hovered = true;
+		if (groupRef) {
+			gsap.to(groupRef.scale, { x: 1.3, y: 1.3, z: 1.3, duration: 0.3, ease: 'back.out(1.7)' });
+		}
+		onHover?.(position);
+	}
+
+	function handlePointerLeave() {
+		hovered = false;
+		if (groupRef) {
+			gsap.to(groupRef.scale, { x: 1, y: 1, z: 1, duration: 0.3, ease: 'power2.out' });
+		}
+		onUnhover?.();
+	}
 </script>
-<!-- <Threlte.Group position={position.map((p) => p*2)}> -->
-<Threlte.Group position={[position[0]*2, position[1]*2, position[2]*2]}>
-    <Float 
+
+<Threlte.Group position={[position[0]*2, position[1]*2, position[2]*2]} bind:ref={groupRef}>
+    <Float
         speed={5*rate}
         rotationSpeed={5*rate}
         rotationIntensity={6*rate}
         floatIntensity={5*rate}
     >
-        <Threlte.Mesh 
+        <Threlte.Mesh
             {geometry}
             {visible}
-            in={bounce} 
+            in={bounce}
             material={getRandomMaterial()}
+            on:pointerenter={handlePointerEnter}
+            on:pointerleave={handlePointerLeave}
         >
         </Threlte.Mesh>
     </Float>
 </Threlte.Group>
-
-<!-- change material, rate, roughness, color to whatever you desire-->
