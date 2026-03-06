@@ -3,6 +3,7 @@
 	import Heading from '$lib/components/Heading.svelte';
 	import type { Content } from '@prismicio/client';
 	import { PrismicRichText } from '@prismicio/svelte';
+	import { theme } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -51,14 +52,16 @@
 				</Heading>
 
 				<p
-					class="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-light text-slate-400"
+					class="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-light
+						{$theme === 'opus' ? 'text-white/60' : 'text-sage-500'}"
 				>
 					<span>{item.time_period}</span>
 					{' '}
 					<span class="text-3xl font-extralight">/</span>{' '}
 					<span>{item.institution}</span>
 				</p>
-				<div class="prose prose-invert prose-slate mt-4 prose-xl text-slate-300 leading-relaxed text-lg">
+				<div class="prose mt-4 prose-xl leading-relaxed text-lg
+					{$theme === 'opus' ? 'text-white/70' : 'text-sage-700'}">
 					<PrismicRichText field={item.description} />
 				</div>
 			</div>

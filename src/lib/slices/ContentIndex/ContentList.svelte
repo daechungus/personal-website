@@ -12,6 +12,7 @@
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 	import IconArrow from '~icons/ic/baseline-arrow-outward';
+	import { theme } from '$lib/stores/theme';
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -102,7 +103,7 @@
 
 <svelte:window on:mousemove={handleMouseMove} />
 
-<ul on:mouseleave={onMouseLeave} class="grid border-b border-b-slate-100">
+<ul on:mouseleave={onMouseLeave} class="grid border-b {$theme === 'opus' ? 'border-b-white/10' : 'border-b-sage-300'}">
 	{#each items as post, index (post.id + index)}
 		<li
 			on:mouseenter={() => onMouseEnter(index)}
@@ -111,11 +112,12 @@
 		>
 			<PrismicLink
 				document={post}
-				class="flex flex-col justify-between border-t border-t-slate-100 py-10 text-slate-200 md:flex-row"
+				class="flex flex-col justify-between border-t py-10 md:flex-row
+					{$theme === 'opus' ? 'border-t-white/10 text-white' : 'border-t-sage-300 text-sage-800'}"
 			>
 				<div class="flex flex-col">
 					<span class="text-3xl font-bold">{post.data.title}</span>
-					<div class="flex gap-3 text-blue-900">
+					<div class="flex gap-3 {$theme === 'opus' ? 'text-white/60' : 'text-matcha-700'}">
 						{#each post.tags as tag}
 							<span class="text-lg font-bold">
 								{tag}

@@ -76,9 +76,27 @@ html, body, #app {
     cursor: url('/cursors/paintbrush.svg') 4 28, auto;
 }
 
+[data-theme="matcha"] a,
+[data-theme="matcha"] button,
+[data-theme="matcha"] [role="button"],
+[data-theme="matcha"] input[type="submit"],
+[data-theme="matcha"] summary,
+[data-theme="matcha"] [onclick] {
+    cursor: url('/cursors/paintbrush.svg') 4 28, pointer;
+}
+
 /* ── Theme: Opus (dark) ── */
 [data-theme="opus"] {
     cursor: url('/cursors/star.svg') 12 12, auto;
+}
+
+[data-theme="opus"] a,
+[data-theme="opus"] button,
+[data-theme="opus"] [role="button"],
+[data-theme="opus"] input[type="submit"],
+[data-theme="opus"] summary,
+[data-theme="opus"] [onclick] {
+    cursor: url('/cursors/star.svg') 12 12, pointer;
 }
 
 [data-theme="opus"],

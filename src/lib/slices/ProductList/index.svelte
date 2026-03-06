@@ -2,6 +2,7 @@
 	import Bounded from '$lib/components/Bounded.svelte';
 	import Heading from '$lib/components/Heading.svelte';
 	import type { Content } from '@prismicio/client';
+	import { theme } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -60,7 +61,8 @@
 
 	{#each slice.primary.item as { product_color, product_name }}
 		<div
-			class="tech-row mb-8 flex items-center justify-center gap-4 text-slate-700"
+			class="tech-row mb-8 flex items-center justify-center gap-4
+				{$theme === 'opus' ? 'text-white/20' : 'text-sage-400'}"
 			aria-label={product_name || undefined}
 		>
 			{#each Array(15) as _, index}

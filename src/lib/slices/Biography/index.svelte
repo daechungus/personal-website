@@ -4,6 +4,7 @@
 	import Heading from '$lib/components/Heading.svelte';
 	import type { Content } from '@prismicio/client';
 	import { PrismicRichText } from '@prismicio/svelte';
+	import { theme } from '$lib/stores/theme';
 	import Avatar from './Avatar.svelte';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
@@ -46,7 +47,8 @@
 			{slice.primary.heading}
 		</Heading>
 
-		<div class="bio-animate opacity-0 col-start-1 prose prose-invert prose-slate prose-xl text-sage-800 leading-relaxed text-lg">
+		<div class="bio-animate opacity-0 col-start-1 prose prose-xl leading-relaxed text-lg
+			{$theme === 'opus' ? 'text-white/80' : 'text-sage-800'}">
 			<PrismicRichText field={slice.primary.description} />
 		</div>
 		<div class="bio-animate opacity-0">

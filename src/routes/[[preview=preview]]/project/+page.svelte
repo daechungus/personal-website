@@ -4,6 +4,7 @@
 	import { formatDate } from '$lib/formatDate';
 	import Bounded from '$lib/components/Bounded.svelte';
 	import Heading from '$lib/components/Heading.svelte';
+	import { theme } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -40,33 +41,36 @@
 </script>
 
 <Bounded>
-	<Heading tag="h1" size="md" class="text-matcha-600">A Peek in My Head</Heading>
+	<Heading tag="h1" size="md">A Peek in My Head</Heading>
 
 	<div bind:this={gridRef} class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each data.projects as project}
 			<PrismicLink field={project} class="group block">
-				<article class="project-card opacity-0 h-[360px] flex flex-col overflow-hidden rounded-lg border-2 border-brown-800 bg-sage-50 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+				<article class="project-card opacity-0 h-[360px] flex flex-col overflow-hidden rounded-lg border-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg
+					{$theme === 'opus' ? 'border-white/10 bg-[#111111]' : 'border-brown-800 bg-sage-50'}">
 					<div class="flex flex-1 flex-col overflow-hidden p-4">
-						<h2 class="line-clamp-2 text-xl font-bold text-sage-800 transition-colors group-hover:text-brown-600">
+						<h2 class="line-clamp-2 text-xl font-bold transition-colors
+							{$theme === 'opus' ? 'text-white group-hover:text-white' : 'text-sage-800 group-hover:text-brown-600'}">
 							{project.data.title}
 						</h2>
 
 						{#if project.tags.length > 0}
 							<div class="mt-2 flex flex-wrap gap-2">
 								{#each project.tags as tag}
-									<span class="rounded-full bg-matcha-100 px-3 py-0.5 text-xs font-semibold text-matcha-700">
+									<span class="rounded-full px-3 py-0.5 text-xs font-semibold
+										{$theme === 'opus' ? 'bg-white/10 text-white' : 'bg-matcha-100 text-matcha-700'}">
 										{tag}
 									</span>
 								{/each}
 							</div>
 						{/if}
 
-						<p class="mt-2 text-sm font-medium text-brown-700">
+						<p class="mt-2 text-sm font-medium {$theme === 'opus' ? 'text-white/60' : 'text-brown-700'}">
 							{formatDate(project.data.date)}
 						</p>
 
 						{#if project.data.meta_description}
-							<p class="mt-2 line-clamp-2 text-sm text-sage-700">
+							<p class="mt-2 line-clamp-2 text-sm {$theme === 'opus' ? 'text-white/60' : 'text-sage-700'}">
 								{project.data.meta_description}
 							</p>
 						{/if}

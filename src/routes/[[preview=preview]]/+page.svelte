@@ -53,7 +53,7 @@
 
 <!-- Projects Section -->
 <Bounded id="projects">
-	<Heading tag="h2" size="md" class="text-matcha-600">A Peek in My Head</Heading>
+	<Heading tag="h2" size="md">A Peek in My Head</Heading>
 
 	<div bind:this={projectGridRef} class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each data.projects as project}
