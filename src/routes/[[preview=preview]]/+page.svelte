@@ -62,7 +62,7 @@
 					{$theme === 'opus' ? 'border-white/10 bg-[#111111]' : 'border-brown-800 bg-sage-50'}">
 					<div class="flex flex-1 flex-col overflow-hidden p-4">
 						<h3 class="line-clamp-2 text-xl font-bold transition-colors
-							{$theme === 'opus' ? 'text-white/90 group-hover:text-white' : 'text-sage-800 group-hover:text-brown-600'}">
+							{$theme === 'opus' ? 'text-white group-hover:text-white' : 'text-sage-800 group-hover:text-brown-600'}">
 							{project.data.title}
 						</h3>
 
@@ -112,7 +112,7 @@
 			<article class="border-b pb-8 last:border-b-0 {$theme === 'opus' ? 'border-white/10' : 'border-brown-600'}">
 				<PrismicLink field={post} class="group">
 					<h3 class="text-2xl font-bold transition-colors
-						{$theme === 'opus' ? 'text-white/90 group-hover:text-white' : 'text-sage-800 group-hover:text-brown-600'}">
+						{$theme === 'opus' ? 'text-white group-hover:text-white' : 'text-sage-800 group-hover:text-brown-600'}">
 						{post.data.title}
 					</h3>
 				</PrismicLink>

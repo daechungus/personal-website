@@ -17,11 +17,11 @@
 
 <PrismicLink
     field={linkField}
-    class={`group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 px-4 py-2 font-bold transition-all ease-out hover:scale-105 ${$theme === 'opus' ? 'text-white border-white/20 bg-[#111111]' : 'text-matcha-600 border-brown-900 bg-sage-50'} ${className}`}
+    class={`group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 px-4 py-2 font-bold transition-all ease-out hover:scale-105 ${$theme === 'opus' ? 'text-black border-black/20 bg-white' : 'text-matcha-600 border-brown-900 bg-sage-50'} ${className}`}
 >
 
 <span
-		class={`absolute inset-0 z-0 h-full rounded transition-transform duration-300 ease-in-out group-hover:translate-y-0 translate-y-9 ${$theme === 'opus' ? 'bg-white/15' : 'bg-matcha-700'}`}
+		class={`absolute inset-0 z-0 h-full rounded transition-transform duration-300 ease-in-out group-hover:translate-y-0 translate-y-9 ${$theme === 'opus' ? 'bg-black/10' : 'bg-matcha-700'}`}
 	></span>
 
 	<span class="relative flex items-center justify-center gap-2"

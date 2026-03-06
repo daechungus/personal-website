@@ -16,7 +16,7 @@
 		class="group relative flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all duration-300 overflow-hidden
 			{$theme === 'matcha'
 				? 'border-matcha-600 bg-sage-50 hover:bg-matcha-100'
-				: 'border-white/20 bg-white/5 hover:bg-white/10'}"
+				: 'border-black/15 bg-black/5 hover:bg-black/10'}"
 		aria-label="Toggle theme between matcha and opus"
 		title={$theme === 'matcha' ? 'Switch to Opus (dark)' : 'Switch to Matcha (light)'}
 	>
@@ -47,7 +47,7 @@
 					? 'opacity-100 rotate-0 scale-100'
 					: 'opacity-0 -rotate-90 scale-0'}"
 		>
-			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-black">
 				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
 			</svg>
 		</span>

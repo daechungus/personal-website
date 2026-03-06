@@ -27,8 +27,11 @@
 			: $page.url.pathname.includes(resolvedHref ?? '')
 	);
 
-	$: textClass = $theme === 'opus' ? 'text-white/90' : 'text-matcha-600';
-	$: bgClass = $theme === 'opus' ? 'bg-white/20' : 'bg-matcha-700';
+	// Desktop: white header in opus → dark text; Mobile: dark overlay in opus → white text
+	$: textClass = type === 'desktop'
+		? ($theme === 'opus' ? 'text-black/80' : 'text-matcha-600')
+		: ($theme === 'opus' ? 'text-white/90' : 'text-matcha-600');
+	$: bgClass = $theme === 'opus' ? 'bg-black/10' : 'bg-matcha-700';
 	$: bgClassMobile = $theme === 'opus' ? 'bg-white/20' : 'bg-matcha-600';
 </script>
 

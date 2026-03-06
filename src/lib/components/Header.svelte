@@ -21,20 +21,20 @@
 	<nav class="mx-auto w-full max-w-7xl">
 		<div
 			class="flex flex-col justify-between rounded-b-lg px-4 py-2 shadow-sm md:m-4 md:flex-row md:items-center md:rounded-xl transition-colors duration-300
-				{$theme === 'opus' ? 'bg-[#111111] border border-white/10' : 'bg-sage-50'}"
+				{$theme === 'opus' ? 'bg-white border border-black/5' : 'bg-sage-50'}"
 		>
 			<div class="flex items-center justify-between">
 				<a
 					href="/"
 					aria-label="Homepage"
 					class="text-xl font-extrabold tracking-tighter transition-colors duration-300
-						{$theme === 'opus' ? 'text-white' : 'text-matcha-600'}">{settings.data.name}</a
+						{$theme === 'opus' ? 'text-black' : 'text-matcha-600'}">{settings.data.name}</a
 				>
 				<button
 					aria-expanded={open}
 					aria-label="Open Menu"
 					class="block p-2 text-2xl md:hidden transition-colors duration-300
-						{$theme === 'opus' ? 'text-white' : 'text-matcha-600'}"
+						{$theme === 'opus' ? 'text-black' : 'text-matcha-600'}"
 					on:click={() => (open = true)}
 				>
 					<IconMenu />
@@ -49,8 +49,7 @@
 						aria-expanded={open}
 						aria-label="Close Menu"
 						class="fixed right-4 top-3 block p-2 text-2xl md:hidden transition-colors duration-300
-							{$theme === 'opus' ? 'text-white' : 'text-matcha-600'}"
-						on:click={() => (open = false)}
+							{$theme === 'opus' ? 'text-white' : 'text-matcha-600'}"						on:click={() => (open = false)}
 					>
 						<IconClose />
 					</button>

@@ -83,7 +83,7 @@ html, body, #app {
 
 [data-theme="opus"],
 [data-theme="opus"] body {
-    color: #e8e8e8;
+    color: #ffffff;
 }
 
 [data-theme="opus"] .background-gradient {
@@ -111,7 +111,7 @@ html, body, #app {
 }
 
 [data-theme="opus"] .theme-text-primary {
-    color: #e8e8e8 !important;
+    color: #ffffff !important;
 }
 
 [data-theme="opus"] .theme-text-secondary {

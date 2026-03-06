@@ -7,16 +7,10 @@
 	import { repositoryName } from '$lib/prismicio';
 	import Footer from '../lib/components/Footer.svelte';
 	import Header from '../lib/components/Header.svelte';
-	import LandingAnimation from '../lib/components/LandingAnimation.svelte';
 	import { theme } from '$lib/stores/theme';
 	import { onMount } from 'svelte';
 
 	export let data;
-
-	// Split the settings name into first/last for landing animation
-	$: nameParts = (data.settings?.data?.name || '').split(' ');
-	$: firstName = nameParts[0] || '';
-	$: lastName = nameParts.slice(1).join(' ') || '';
 
 	onMount(() => {
 		theme.init();
@@ -37,8 +31,6 @@
 	{/if}
 </svelte:head>
 
-
-<LandingAnimation {firstName} {lastName} />
 
 <div class="relative min-h-screen flex flex-col">
 	<Header settings={data.settings}>
